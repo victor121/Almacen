@@ -8,16 +8,26 @@ namespace Almacen
 {
     public partial class caja
     {
-        public void ingresarDinero(int plata)
+        public bool ingresarDinero(int plata)
         {
             var bd = new BD();
             var tablaCaja = bd.caja;
+	    if (tablaCaja.Count() == 0)
+        	        {
+                	    caja cajita = new caja();
+    	                    cajita.dinero = plata;
+	                    bd.caja.Add(cajita);
+	                    bd.SaveChanges();
+	                }
             foreach (var caja in tablaCaja)
             {           
                 caja.dinero = caja.dinero + plata;
+                return true;
             }
             bd.SaveChanges();
+            return false;
         }
+ 
         public bool sacarDinero(int plata)
         {
             var bd = new BD();
