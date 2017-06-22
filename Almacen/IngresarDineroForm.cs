@@ -26,6 +26,7 @@ namespace Almacen
                 caja.ingresarDinero(plata);
                 MessageBox.Show("Dinero agregado exitosamente");
                 txtIngresarDinero.Text = "";
+                
             }
             catch (Exception ex)
             {
